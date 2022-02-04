@@ -16,4 +16,7 @@ body {
   padding: 0;
   margin: 0;
 }
+h1 {
+  font-weight: bold;
+}
 </style>
