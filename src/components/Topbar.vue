@@ -1,21 +1,22 @@
 <template>
   <nav class="navbar navbar-light">
     <div class="container">
-      <router-link class="navbar-brand" :to="{ name: 'Home' }">
+      <router-link class="navbar-brand" :to="{ name: 'GlobalFeed' }">
         MediumClone
       </router-link>
 
-      <ul class="nav navbar-nav menu-wrap">
+      <ul v-show="!isLoading" class="nav navbar-nav menu-wrap">
         <li class="nav-item">
           <router-link
             class="nav-link"
-            :to="{ name: 'Home' }"
+            :to="{ name: 'GlobalFeed' }"
             exact
             active-class="active"
           >
             Home
           </router-link>
         </li>
+
         <template v-if="!isLoggedIn">
           <li class="nav-item">
             <router-link
@@ -84,7 +85,7 @@ export default {
   name: "Topbar",
 
   computed: {
-    ...mapGetters("auth", ["isLoggedIn", "currentUser"]),
+    ...mapGetters("auth", ["isLoggedIn", "currentUser", "isLoading"]),
   },
 };
 </script>

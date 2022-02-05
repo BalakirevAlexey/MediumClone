@@ -79,7 +79,7 @@ export default {
         password: this.password,
       };
 
-      this.register(user).then(() => this.$router.push({ name: "Home" }));
+      this.register(user).then(() => this.$router.push({ name: "GlobalFeed" }));
     },
   },
 };

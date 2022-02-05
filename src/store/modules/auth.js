@@ -1,10 +1,11 @@
 import authApi from "@/api/auth.js";
-import { setItem } from "@/helpers/persistenceStorage";
+import { setItem } from "@/helpers/persistanceStorage";
 
 export default {
   namespaced: true,
   state: {
     isSubmitting: false,
+    isLoading: false,
     currentUser: null,
     validationErrors: null,
     isLoggedIn: null,
@@ -13,7 +14,8 @@ export default {
     isSubmitting: ({ isSubmitting }) => isSubmitting,
     currentUser: ({ currentUser }) => currentUser,
     validationErrors: ({ validationErrors }) => validationErrors,
-    isLoggedIn: ({ isLoggedIn }) => isLoggedIn,
+    isLoggedIn: ({ isLoggedIn }) => Boolean(isLoggedIn),
+    isLoading: ({ isLoading }) => isLoading,
   },
   mutations: {
     registerStart(state) {
@@ -42,6 +44,20 @@ export default {
     loginFailure(state, errors) {
       state.isSubmitting = false;
       state.validationErrors = errors;
+    },
+
+    getCurrentUserStart(state) {
+      state.isLoading = true;
+    },
+    getCurrentUserSuccess(state, user) {
+      state.currentUser = user;
+      state.isLoading = false;
+      state.isLoggedIn = true;
+    },
+    getCurrentUserFailure(state) {
+      state.isLoading = false;
+      state.isLoggedIn = false;
+      state.currentUser = null;
     },
   },
   actions: {
@@ -83,6 +99,24 @@ export default {
             const errors = err.response.data.errors;
 
             commit("loginFailure", errors);
+          });
+      });
+    },
+
+    getCurrenUser({ commit }) {
+      return new Promise((resolve) => {
+        commit("getCurrentUserStart");
+
+        authApi
+          .getCurrentUser()
+          .then((res) => {
+            const user = res.data.user;
+
+            commit("getCurrentUserSuccess", user);
+            resolve(user);
+          })
+          .catch(() => {
+            commit("loginFailure");
           });
       });
     },
