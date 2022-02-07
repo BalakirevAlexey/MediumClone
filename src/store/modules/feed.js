@@ -10,7 +10,7 @@ export default {
 
   getters: {
     data: ({ data }) => data,
-    isLoading: ({ isLoading }) => isLoading,
+    isLoading: (state) => state.isLoading,
     error: ({ error }) => error,
   },
 
@@ -30,10 +30,9 @@ export default {
   },
 
   actions: {
-    getFeed({ commit }, apiUrl) {
+    getFeed({ commit }, { apiUrl }) {
       return new Promise((resolve) => {
         commit("getFeedStart");
-        console.log(feedApi);
 
         feedApi
           .getFeed(apiUrl)
