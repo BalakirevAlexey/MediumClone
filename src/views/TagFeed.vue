@@ -4,7 +4,7 @@
     <div class="container page">
       <div class="row">
         <div class="col-md-9">
-          <AppFeedToggler />
+          <AppFeedToggler :tag-name="tagName" />
 
           <AppFeed :api-url="apiUrl" />
         </div>
@@ -24,12 +24,17 @@ import AppBanner from "@/components/Banner.vue";
 import AppFeedToggler from "@/components/FeedToggler.vue";
 
 export default {
-  name: "AppGlobalFeed",
+  name: "AppTagFeed",
 
   components: { AppFeed, AppTags, AppBanner, AppFeedToggler },
 
-  data: () => ({
-    apiUrl: "/articles",
-  }),
+  computed: {
+    tagName() {
+      return this.$route.params.slug;
+    },
+    apiUrl() {
+      return `/articles?tag=${this.tagName}`;
+    },
+  },
 };
 </script>

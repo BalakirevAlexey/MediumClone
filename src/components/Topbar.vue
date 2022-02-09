@@ -5,7 +5,7 @@
         MediumClone
       </router-link>
 
-      <ul v-show="!isLoading" class="nav navbar-nav menu-wrap">
+      <ul class="nav navbar-nav menu-wrap">
         <li class="nav-item">
           <router-link
             class="nav-link"
@@ -82,7 +82,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "Topbar",
+  name: "appTopbar",
 
   computed: {
     ...mapGetters("auth", ["isLoggedIn", "currentUser", "isLoading"]),

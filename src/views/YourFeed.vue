@@ -24,12 +24,12 @@ import AppBanner from "@/components/Banner.vue";
 import AppFeedToggler from "@/components/FeedToggler.vue";
 
 export default {
-  name: "AppGlobalFeed",
+  name: "AppYourFeed",
 
   components: { AppFeed, AppTags, AppBanner, AppFeedToggler },
 
   data: () => ({
-    apiUrl: "/articles",
+    apiUrl: "/articles/feed",
   }),
 };
 </script>

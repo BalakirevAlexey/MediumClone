@@ -16,7 +16,7 @@
 <script>
 import { range } from "@/helpers/utils";
 export default {
-  name: "",
+  name: "AppPagination",
   props: {
     total: {
       type: Number,

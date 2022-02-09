@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "ValidationErrors",
+  name: "AppValidationErrors",
   props: {
     validationErrors: {
       type: Object,

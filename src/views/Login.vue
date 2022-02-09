@@ -53,7 +53,7 @@ import AppValidationErrors from "@/components/ValidationErrors";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name: "Login",
+  name: "AppLogin",
 
   components: { AppValidationErrors },
 
