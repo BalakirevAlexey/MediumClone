@@ -40,7 +40,7 @@
           <h1>{{ article.title }}</h1>
           <p>{{ article.description }}</p>
           <span>Read more...</span>
-          TAG LIST
+          <AppTagList v-if="article.tagList" :tag-list="article.tagList" />
         </router-link>
       </div>
       <AppPagination
@@ -61,6 +61,7 @@ import { limit } from "@/helpers/vars";
 import AppPagination from "@/components/Pagination";
 import AppLoading from "@/components/Loading.vue";
 import AppErrorMessage from "@/components/ErrorMessage.vue";
+import AppTagList from "@/components/TagList.vue";
 
 export default {
   name: "AppFeed",
@@ -68,6 +69,7 @@ export default {
     AppPagination,
     AppLoading,
     AppErrorMessage,
+    AppTagList,
   },
   props: {
     apiUrl: {

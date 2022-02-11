@@ -1,4 +1,4 @@
-import feedTags from "@/api/tags";
+import tagsApi from "@/api/tags";
 
 export default {
   namespaced: true,
@@ -35,7 +35,7 @@ export default {
       return new Promise((resolve) => {
         commit("getTagsStart");
 
-        feedTags
+        tagsApi
           .getTags()
           .then((res) => {
             commit("getTagsSuccess", res.data.tags);

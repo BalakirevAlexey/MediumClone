@@ -10,7 +10,7 @@
         </div>
 
         <div class="col-md-3">
-          <AppTags />
+          <AppPopularTags />
         </div>
       </div>
     </div>
@@ -18,15 +18,15 @@
 </template>
 
 <script>
-import AppFeed from "@/components/Feed.vue";
-import AppTags from "@/components/Tags.vue";
+import AppPopularTags from "@/components/PopularTags.vue";
 import AppBanner from "@/components/Banner.vue";
+import AppFeed from "@/components/Feed.vue";
 import AppFeedToggler from "@/components/FeedToggler.vue";
 
 export default {
   name: "AppYourFeed",
 
-  components: { AppFeed, AppTags, AppBanner, AppFeedToggler },
+  components: { AppFeed, AppPopularTags, AppBanner, AppFeedToggler },
 
   data: () => ({
     apiUrl: "/articles/feed",
