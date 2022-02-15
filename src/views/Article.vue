@@ -28,7 +28,7 @@
             <router-link
               class="btn btn-outline-secondary btn-sm"
               :to="{
-                name: 'aditArticle',
+                name: 'EditArticle',
                 params: { slug: article.slug },
               }"
             >

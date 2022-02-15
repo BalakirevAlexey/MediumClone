@@ -59,6 +59,19 @@ export default {
       state.isLoggedIn = false;
       state.currentUser = null;
     },
+
+    updateCurrentUserStart() {},
+    updateCurrentUserSuccess(state, user) {
+      state.currentUser = user;
+      state.isLoading = false;
+      state.isLoggedIn = true;
+    },
+    updateCurrentUserFailure() {},
+
+    logout(state) {
+      state.currentUser = null;
+      state.isLoggedIn = false;
+    },
   },
   actions: {
     register({ commit }, credentials) {
@@ -116,8 +129,16 @@ export default {
             resolve(user);
           })
           .catch(() => {
-            commit("loginFailure");
+            commit("getCurrentUserFailure");
           });
+      });
+    },
+
+    logout({ commit }) {
+      return new Promise((resolve) => {
+        setItem("accessToken", "");
+        commit("logout");
+        resolve();
       });
     },
   },
