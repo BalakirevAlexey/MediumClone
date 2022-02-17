@@ -8,8 +8,6 @@
           :class="{ active: routeName === 'YourFeed' }"
         >
           Your feed
-
-          {{ isLoggedIn }}
         </router-link>
       </li>
 

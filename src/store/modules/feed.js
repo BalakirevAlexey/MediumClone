@@ -42,10 +42,8 @@ export default {
             resolve(res.data);
           })
           .catch((err) => {
-            const errors = err.response.data.errors;
-
-            commit("getFeedFailure", errors);
-            console.log(errors);
+            commit("getFeedFailure", err);
+            console.log(err);
           });
       });
     },
